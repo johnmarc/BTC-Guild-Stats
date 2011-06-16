@@ -3,7 +3,7 @@ import json
 import subprocess
 
 #Config Options
-API_KEY = 'ENTER YOUR KEY HERE'
+API_KEY = 'PUT YOUR KEY HERE'
 
 
 my_stats = subprocess.check_output(['/usr/bin/curl', '-s', 'http://www.btcguild.com/api.php?api_key=' + API_KEY])
@@ -45,6 +45,9 @@ for block in block_json['blocks']:
 avg_speed = total_seconds/total_blocks
 avg_blocks = 24 * 60 * 60 / avg_speed
 est_pb = unconf/total_un
+if(unconf == 0 or total_un >= 25) :
+	est_pb = est
+
 
 print "+-+-+-+-BTC GUILD Pool Stats for %s-+-+-+-+" % API_KEY
 print "+ Confirmed Payout   : %.8f                                       +" % conf
