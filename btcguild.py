@@ -1,10 +1,14 @@
 #!/usr/bin/python
 import json
 import subprocess
+import ConfigParser
+
+config = ConfigParser.RawConfigParser()
+config.read('btcguild.conf')
 
 #Config Options
-API_KEY = 'YOUR API KEY HERE'
-CURL_PATH = '/usr/bin/curl'
+API_KEY = config.get('btcguild', 'API_KEY')
+CURL_PATH = config.get('btcguild', 'CURL_PATH')
 
 my_stats = subprocess.check_output([CURL_PATH, '-s', 'http://www.btcguild.com/api.php?api_key=' + API_KEY])
 pool_stats = subprocess.check_output([CURL_PATH, '-s', 'http://www.btcguild.com/pool_stats.php'])

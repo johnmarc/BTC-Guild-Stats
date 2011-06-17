@@ -1,0 +1,24 @@
+BTC Guild API Stats Parser
+To configure put your API Key and path to your curl executable in btcguild.conf
+
+https://github.com/johnmarc/BTC-Guild-Stats
+
+SAMPLE OUTPUT
++-+-+-+-BTC GUILD Pool Stats for XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-+-+-+-+
++ Confirmed Payout   : 0.05835614                                       +
++ Unconfirmed Payout : 0.49588160                                       +
++ Estimated Payout   : 0.01787720                                       +
++ Sum Total (inc est): 0.57211494                                       +
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
++ Worker name: XXX_1                                                    +
++ Worker Hashrate 377.00  Shares 22  Stales 0  Stale% 0.00              +
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
++ Worker name: XXX_2                                                    +
++ Worker Hashrate 310.19  Shares 27  Stales 1  Stale% 3.70              +
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
++ Total Worker Hashrate 687.19  Shares 49  Stales 1  Stale% 2.04        +
++ Pool Average Block Time (seconds) 2257   Round Time 0:06:22           +
++ Latest Block Times   0:04:51 1:11:28 0:31:28 0:19:01 0:18:23 0:00:17  +
++ Pool Est Blks/24hrs   38      Miner Est 24hr Rewards : 0.68434325     +
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
