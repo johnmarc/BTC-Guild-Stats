@@ -25,8 +25,10 @@ for worker in my_json['workers']:
 	shares += my_json['workers'][worker]['round_shares']
 	stales += my_json['workers'][worker]['round_stales']
 
-if(shares > 0 and shares > 0) :
+if(shares > 0 and stales > 0) :
 	stale_perc = float(stales)/float(shares) * 100
+else:
+	stale_perc = 0.0
 
 #calculate recen block stats
 def toSeconds(time) :
@@ -55,7 +57,18 @@ print "+ Unconfirmed Payout : %.8f                                       +" % un
 print "+ Estimated Payout   : %.8f                                       +" % est
 print "+ Sum Total (inc est): %.8f                                       +" % round(conf+unconf+est,8)
 print "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+"
-print "+ Total Worker Hashrate %.2f  Shares %d  Stales %d  Stale%% %.2f       +" % (hashrate,  shares, stales, stale_perc)
+for worker in my_json['workers']:
+	workerhashrate = my_json['workers'][worker]['hash_rate']
+	workershares = my_json['workers'][worker]['round_shares']
+	workerstales = my_json['workers'][worker]['round_stales']
+	if(workershares > 0 and workerstales > 0) :
+		workerstale_perc = float(workerstales)/float(workershares) * 100
+	else:
+		workerstale_perc = 0.0
+	print "+ Worker name: %s       					+" % (my_json['workers'][worker]['worker_name'])
+	print "+ Worker Hashrate %.2f  Shares %d  Stales %d  Stale%% %.2f                 +" % (workerhashrate,  workershares, workerstales, workerstale_perc)
+	print "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+"
+print "+ Total Worker Hashrate %.2f  Shares %d  Stales %d  Stale%% %.2f           +" % (hashrate,  shares, stales, stale_perc)
 print "+ Pool Average Block Time (seconds) %.0f   Round Time %s           +" % (avg_speed, pool_json['round_time'])
 print "+ Latest Block Times   %s %s %s %s %s %s  +" % ( block_json['blocks'][0]['duration'], block_json['blocks'][1]['duration'], block_json['blocks'][2]['duration'], block_json['blocks'][3]['duration'], block_json['blocks'][4]['duration'], block_json['blocks'][5]['duration'])
 print "+ Pool Est Blks/24hrs   %.0f      Miner Est 24hr Rewards : %.8f     +" % (avg_blocks, avg_blocks * est_pb)
