@@ -68,7 +68,7 @@ for worker in my_json['workers']:
 	print "+ Worker name: %s     					+" % (my_json['workers'][worker]['worker_name'])
 	print "+ Worker Hashrate %.2f  Shares %d  Stales %d  Stale%% %.2f             +" % (workerhashrate,  workershares, workerstales, workerstale_perc)
 	print "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+"
-print "+ Total Worker Hashrate %.2f  Shares %d  Stales %d  Stale%% %.2f         +" % (hashrate,  shares, stales, stale_perc)
+print "+ Total Worker Hashrate %.2f  Shares %d  Stales %d  Stale%% %.2f       +" % (hashrate,  shares, stales, stale_perc)
 print "+ Pool Average Block Time (seconds) %.0f   Round Time %s           +" % (avg_speed, pool_json['round_time'])
 print "+ Latest Block Times   %s %s %s %s %s %s  +" % ( block_json['blocks'][0]['duration'], block_json['blocks'][1]['duration'], block_json['blocks'][2]['duration'], block_json['blocks'][3]['duration'], block_json['blocks'][4]['duration'], block_json['blocks'][5]['duration'])
 print "+ Pool Est Blks/24hrs   %.0f      Miner Est 24hr Rewards : %.8f     +" % (avg_blocks, avg_blocks * est_pb)
