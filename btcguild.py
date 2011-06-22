@@ -11,11 +11,9 @@ API_KEY = config.get('btcguild', 'API_KEY')
 CURL_PATH = config.get('btcguild', 'CURL_PATH')
 
 my_stats = subprocess.check_output([CURL_PATH, '-s', 'http://www.btcguild.com/api.php?api_key=' + API_KEY])
-pool_stats = subprocess.check_output([CURL_PATH, '-s', 'http://www.btcguild.com/pool_stats.php'])
 block_stats = subprocess.check_output([CURL_PATH, '-s', 'http://www.btcguild.com/recent_blocks.php'])
 
 my_json = json.loads(my_stats)
-pool_json = json.loads(pool_stats)
 block_json = json.loads(block_stats)
 
 #Calculate personal stats
@@ -73,7 +71,7 @@ for worker in my_json['workers']:
 	print "+ Worker Hashrate %.2f  Shares %d  Stales %d  Stale%% %.2f             +" % (workerhashrate,  workershares, workerstales, workerstale_perc)
 	print "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+"
 print "+ Total Worker Hashrate %.2f  Shares %d  Stales %d  Stale%% %.2f       +" % (hashrate,  shares, stales, stale_perc)
-print "+ Pool Average Block Time (seconds) %.0f   Round Time %s           +" % (avg_speed, pool_json['round_time'])
+print "+ Pool Average Block Time (seconds) %.0f   Round Time %s           +" % (avg_speed, my_json['pool']['round_time'])
 print "+ Latest Block Times   %s %s %s %s %s %s  +" % ( block_json['blocks'][0]['duration'], block_json['blocks'][1]['duration'], block_json['blocks'][2]['duration'], block_json['blocks'][3]['duration'], block_json['blocks'][4]['duration'], block_json['blocks'][5]['duration'])
 print "+ Pool Est Blks/24hrs   %.0f      Miner Est 24hr Rewards : %.8f     +" % (avg_blocks, avg_blocks * est_pb)
 print "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+"
